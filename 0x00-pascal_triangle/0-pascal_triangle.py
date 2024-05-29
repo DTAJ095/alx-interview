@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ recursive Pascal triangle function """
+
+
 def pascal_triangle(n):
     """ Returns a list of integers representing the Pascal triangle """
     if n == 0:
