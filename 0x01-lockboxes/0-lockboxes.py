@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-
 """ Method to determine if all the boxes can be opened """
+
 
 def canUnlockAll(boxes):
     """ Returns True if all the boxes can be opened or False if not """
@@ -12,5 +12,4 @@ def canUnlockAll(boxes):
                 break
         if not flag:
             return False
-    
     return True
