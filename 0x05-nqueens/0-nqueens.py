@@ -15,6 +15,7 @@ def print_board(board):
         matrix.append(row_list)
     print(matrix)
 
+
 def is_safe(board, row, col):
     """ Check if a queen can be placed on board[row][col] """
     for i in range(col):
@@ -27,6 +28,7 @@ def is_safe(board, row, col):
         if board[i][j] == 1:
             return False
     return True
+
 
 def solve_n_queens_poss(board, col, size):
     """ Possibilities to solve the N queens problems
@@ -43,6 +45,7 @@ def solve_n_queens_poss(board, col, size):
             res = solve_n_queens_poss(board, col + 1, size) or res
             board[i][col] = 0
     return res
+
 
 def solve_n_queens(size):
     """ Solve the N queens problems
