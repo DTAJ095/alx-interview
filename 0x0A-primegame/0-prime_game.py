@@ -13,8 +13,6 @@ def isWinner(x: int, nums: list) -> str:
     """Prime Game"""
     if x == 0 or x == 1:
         return None
-    if x % 2 == 0:
-        return "Ben"
     if x != len(nums):
         return None
     if len(nums) == 0:
