@@ -15,6 +15,10 @@ def isWinner(x, nums):
     """Prime Game"""
     if x == 0 or x == 1:
         return None
+    if x != len(nums):
+        return None
+    if len(nums) == 0:
+        return None
     nums = rm_multiples(x, nums)
     if len(nums) % 2 == 0:
         return "Maria"
