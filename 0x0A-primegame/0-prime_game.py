@@ -5,11 +5,10 @@
 def rm_multiples(n: int, nums: list) -> list:
     """Remove multiples"""
     for i in range(2, len(nums)):
-        if i * n < len(nums):
+        try:
             nums[i * n] = 0
-        else:
+        except IndexError:
             break
-    return nums
 
 
 def isWinner(x: int, nums: list) -> str:
