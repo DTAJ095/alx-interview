@@ -15,6 +15,10 @@ def isWinner(x: int, nums: list) -> str:
         return None
     if x % 2 == 0:
         return "Ben"
+    if x != len(nums):
+        return None
+    if len(nums) == 0:
+        return None
     nums[1] = 0
     for i in range(2, len(nums)):
         if nums[i] != 0:
