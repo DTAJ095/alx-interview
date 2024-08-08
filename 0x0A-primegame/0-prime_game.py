@@ -25,7 +25,7 @@ def isWinner(x: int, nums: list) -> str:
     a = [1 for x in range(sorted(nums)[-1] + 1)]
     a[0], a[1] = 0, 0
     for i in range(2, len(a)):
-        a = rm_multiples(a, i)
+        a = rm_multiples(i, a)
 
     for i in nums:
         if sum(a[:i + 1]) % 2 == 0:
