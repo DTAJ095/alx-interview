@@ -33,7 +33,7 @@ def isWinner(x: int, nums: list) -> str:
         if primes[i] == 1:
             primes = rm_multiples(i, primes)
     for n in nums:
-        if primes[n]:
+        if not primes[n]:
             maria += 1
         else:
             ben += 1
