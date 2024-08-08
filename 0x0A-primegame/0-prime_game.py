@@ -2,21 +2,14 @@
 """Prime Game"""
 
 
-def isPrime(n: int) -> bool:
-    """Check if a number is prime"""
-    if n < 2:
-        return False
-    for i in range(2, n):
-        if n % i == 0:
-            return False
-    return True
-
-
-def rm_multiples(n: int, primes: list) -> list:
-    """Remove multiples of a number"""
-    for i in range(2 * n, len(primes), n):
-        primes[i] = 0
-    return primes
+def rm_multiples(n: int, nums: list) -> list:
+    """Remove multiples"""
+    for i in range(2, len(nums)):
+        if i * n < len(nums):
+            nums[i * n] = 0
+        else:
+            break
+    return nums
 
 
 def isWinner(x: int, nums: list) -> str:
@@ -28,15 +21,17 @@ def isWinner(x: int, nums: list) -> str:
 
     maria = 0
     ben = 0
-    primes = [0, 0] + [1] * (max(nums) - 1)
+
+    primes = [1 for x in range(sorted(nums)[-1] + 1)]
+    primes[0], primes[1] = 0, 0
     for i in range(2, len(primes)):
-        if primes[i] == 1:
-            primes = rm_multiples(i, primes)
-    for n in nums:
-        if not primes[n]:
-            maria += 1
-        else:
+        a = rm_multiples(i, primes)
+
+    for i in nums:
+        if sum(primes[:i + 1]) % 2 == 0:
             ben += 1
+        else:
+            maria += 1
     if maria > ben:
         return "Maria"
     if ben > maria:
