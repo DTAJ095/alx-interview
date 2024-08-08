@@ -2,46 +2,33 @@
 """Prime Game"""
 
 
-def isPrime(n: int) -> bool:
-    """Prime Game"""
-    if n <= 1:
-        return False
-    if n <= 3:
-        return True
-    if n % 2 == 0 or n % 3 == 0:
-        return False
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
-            return False
-        i += 6
-    return True
-
-
-def rm_multiple(n: int, m: int) -> list:
-    """Prime Game"""
-    multiples = []
-    for i in range(n, m + 1):
-        if isPrime(i):
-            multiples.append(i)
-    return multiples
+def rm_multiples(n: int, nums: list) -> list:
+    """Remove multiples"""
+    for i in range(n * 2, len(nums), n):
+        nums[i] = 0
+    return nums
 
 
 def isWinner(x: int, nums: list) -> str:
-    """Prime Game"""
+    """ Prime Game """
     if x == 0 or x == 1:
         return None
     if x != len(nums):
         return None
-    
+
     maria = 0
     ben = 0
-    multiples = rm_multiple(1, max(nums))
+
+    a = [1 for x in range(sorted(nums)[-1] + 1)]
+    a[0], a[1] = 0, 0
+    for i in range(2, len(a)):
+        a = rm_multiples(i, a)
+
     for i in nums:
-        if i in multiples:
-            maria += 1
-        else:
+        if sum(a[:i + 1]) % 2 == 0:
             ben += 1
+        else:
+            maria += 1
     if maria > ben:
         return "Maria"
     if ben > maria:
