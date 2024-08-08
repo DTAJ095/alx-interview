@@ -4,27 +4,18 @@
 
 def rm_multiples(x, nums):
     """Remove multiples"""
-    nums = sorted(nums)
-    nums = list(dict.fromkeys(nums))
-    nums = [num for num in nums if num % x != 0]
-    return nums
+    for i in range(2, len(nums)):
+        for j in range(i * 2, len(nums), i):
+            if nums[j] % i == 0:
+                nums[j] = 0
+    return sorted(list(set(nums)))
 
 
 def isWinner(x, nums):
     """Prime Game"""
-    if not nums:
-        return None
-
-    if x != len(nums):
-        return None
-
     if x == 0 or x == 1:
         return None
-
-    if x % 2 == 0:
-        return "Ben"
-    nums = rm_multiples(2, nums)
-
-    if not nums:
+    nums = rm_multiples(x, nums)
+    if len(nums) % 2 == 0:
         return "Maria"
     return "Ben"
