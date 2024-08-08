@@ -22,13 +22,13 @@ def isWinner(x: int, nums: list) -> str:
     maria = 0
     ben = 0
 
-    a = [1 for x in range(sorted(nums)[-1] + 1)]
-    a[0], a[1] = 0, 0
-    for i in range(2, len(a)):
-        a = rm_multiples(i, a)
+    primes = [1 for x in range(sorted(nums)[-1] + 1)]
+    primes[0], primes[1] = 0, 0
+    for i in range(2, len(primes)):
+        a = rm_multiples(i, primes)
 
     for i in nums:
-        if sum(a[:i + 1]) % 2 == 0:
+        if sum(primes[:i + 1]) % 2 == 0:
             ben += 1
         else:
             maria += 1
