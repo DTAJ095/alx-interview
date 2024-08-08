@@ -28,3 +28,4 @@
         <li>Arrays and lists for storing the integers and tracking removed numbers.</li>
     </ul>
 </ol>
+<p>By grasping these concepts and making use of the recommended resources, you will be well-equipped to approach the problem with a solid understanding of both the mathematical and programming challenges involved. The key to success in this project lies in applying efficient algorithms to manage the game’s state and making optimal decisions based on the game’s rules.</p>
