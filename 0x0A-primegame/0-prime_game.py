@@ -2,59 +2,30 @@
 """Prime Game"""
 
 
-def isWinner(x: int, nums:list) -> str:
-    """Prime Game"""
+def isWinner(x, nums):
+    """ Prime Game """
     if x == 0 or x == 1:
         return None
     if x != len(nums):
         return None
     n = max(nums)
     nums.sort()
-    primes = [1 for x in range(n + 1)]
-    primes[0], primes[1] = 0, 0
-    for i in range(2, len(primes)):
-        if primes[i] == 1:
-            for j in range(i * i, len(primes), i):
-                primes[j] = 0
-    primes_sum = [0]
-    for i in range(1, len(primes)):
-        primes_sum.append(primes_sum[i - 1] + primes[i])
-    if sum(primes) % 2 == 0:
+    primes = [False for i in range(n + 1)]
+    for i in range(2, int(n ** 0.5) + 1):
+        if not primes[i]:
+            for j in range(i*i, n + 1, i):
+                primes[j] = True
+    primes[0] = primes[1] = True
+    count = 0
+    for i in range(len(primes)):
+        if not primes[i]:
+            count += 1
+        primes[i] = count
+    play = 0
+    for n in nums:
+        play += primes[n] % 2 == 1
+    if play * 2 == len(nums):
+        return None
+    if play * 2 > len(nums):
         return "Maria"
     return "Ben"
-
-# def rm_multiples(n: int, nums: list) -> list:
-#     """Remove multiples"""
-#     for i in range(2, len(nums)):
-#         if i * n < len(nums):
-#             nums[i * n] = 0
-#         else:
-#             break
-#     return nums
-
-
-# def isWinner(x: int, nums: list) -> str:
-#     """ Prime Game """
-#     if x == 0 or x == 1:
-#         return None
-#     if x != len(nums):
-#         return None
-
-#     maria = 0
-#     ben = 0
-
-#     primes = [1 for x in range(sorted(nums)[-1] + 1)]
-#     primes[0], primes[1] = 0, 0
-#     for i in range(2, len(primes)):
-#         a = rm_multiples(i, primes)
-
-#     for i in nums:
-#         if sum(primes[:i + 1]) % 2 == 0:
-#             ben += 1
-#         else:
-#             maria += 1
-#     if maria > ben:
-#         return "Maria"
-#     if ben > maria:
-#         return "Ben"
-#     return None
