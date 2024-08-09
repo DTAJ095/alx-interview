@@ -8,20 +8,20 @@ def isWinner(x, nums):
         return None
     n = max(nums)
     nums.sort()
-    m = [False for i in range(n + 1)]
+    primes = [False for i in range(n + 1)]
     for i in range(2, int(n ** 0.5) + 1):
-        if not m[i]:
+        if not primes[i]:
             for j in range(i*i, n + 1, i):
-                m[j] = True
-    m[0] = m[1] = True
+                primes[j] = True
+    primes[0] = primes[1] = True
     c = 0
-    for i in range(len(m)):
-        if not m[i]:
+    for i in range(len(primes)):
+        if not primes[i]:
             c += 1
-        m[i] = c
+        primes[i] = c
     p1 = 0
-    for n in nums:
-        p1 += m[n] % 2 == 1
+    for k in nums:
+        p1 += primes[k] % 2 == 1
     if p1 * 2 == len(nums):
         return None
     if p1 * 2 > len(nums):
